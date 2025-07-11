@@ -1,4 +1,4 @@
-telegram_dbt:
+telegram_db:
   target: dev
   outputs:
     dev:
