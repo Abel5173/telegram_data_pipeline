@@ -26,6 +26,10 @@ models:
       - name: date_id
         data_tests:
           - not_null
+      - name: product_label
+        data_tests:
+          - accepted_values:
+              values: ['bottle', 'cosmetic', 'pill', null]  # Example product labels
     data_tests:
       - unique_combination_of_columns:
           combination_of_columns:
