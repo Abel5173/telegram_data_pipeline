@@ -80,8 +80,7 @@ def load_json_to_postgres():
                 for json_file in channel_dir.glob("*.json"):
                     logger.info(f"Loading file: {json_file}")
                     with open(json_file, 'r', encoding='utf-8') as f:
-                        messages = [json.loads(line)
-                                    for line in f if line.strip()]
+                        messages = [json.loads(line) for line in f if line.strip()]
 
                     if not messages:
                         logger.warning(f"No data in {json_file}")
@@ -111,8 +110,7 @@ def load_json_to_postgres():
                         values
                     )
                     conn.commit()
-                    logger.info(
-                        f"Loaded {len(values)} messages from {json_file}")
+                    logger.info(f"Loaded {len(values)} messages from {json_file}")
 
         conn.close()
         logger.info("Finished loading data to PostgreSQL")
