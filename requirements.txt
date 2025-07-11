@@ -87,6 +87,7 @@ pillow==11.3.0
 propcache==0.3.2
 protobuf==4.25.8
 psutil==7.0.0
+psycopg2==2.9.10
 psycopg2-binary==2.9.9
 py-cpuinfo==9.0.0
 pyaes==1.6.1
