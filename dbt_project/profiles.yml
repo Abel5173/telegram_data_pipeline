@@ -8,4 +8,5 @@ telegram_db:
       password: "{{ env_var('POSTGRES_PASSWORD') }}"
       port: "{{ env_var('POSTGRES_PORT') | as_number }}"
       dbname: "{{ env_var('POSTGRES_DB') }}"
+      schema: public
       threads: 4
