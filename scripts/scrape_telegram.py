@@ -126,7 +126,7 @@ async def main():
         # Set timezone to UTC for consistency
         utc = pytz.UTC
         end_date = datetime.now(utc)
-        start_date = end_date - timedelta(days=7)
+        start_date = end_date - timedelta(days=30)
 
         # Debug: Log start and end dates
         logger.debug(f"Scraping from {start_date} to {end_date}")
