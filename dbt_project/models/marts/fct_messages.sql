@@ -18,8 +18,8 @@
 
 SELECT
     m.message_id,
-    m.channel_id,
-    m.date_id,
+    m.channel_name AS channel_id,  
+    m.message_date::DATE AS date_id,
     m.message_text,
     m.has_media,
     m.media_type,
