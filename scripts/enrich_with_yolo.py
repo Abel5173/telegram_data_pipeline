@@ -12,12 +12,10 @@ logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
 file_handler = logging.FileHandler('logs/yolo_enrichment.log')
-file_handler.setFormatter(logging.Formatter(
-    '%(asctime)s - %(levelname)s - %(message)s'))
+file_handler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(message)s'))
 
 console_handler = logging.StreamHandler()
-console_handler.setFormatter(logging.Formatter(
-    '%(asctime)s - %(levelname)s - %(message)s'))
+console_handler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(message)s'))
 
 logger.handlers = []
 logger.addHandler(file_handler)
@@ -109,8 +107,7 @@ def enrich_images_with_yolo():
                                 confidence,
                                 json.dumps(bbox)
                             ))
-                            logger.info(
-                                f"Detected {product_label} in {media_path} with confidence {confidence}")
+                            logger.info(f"Detected {product_label} in {media_path} with confidence {confidence}")
                 except Exception as e:
                     logger.error(
                         f"Failed to process image {media_path}: {str(e)}")
@@ -121,9 +118,7 @@ def enrich_images_with_yolo():
                 execute_values(
                     cur,
                     """
-                    INSERT INTO raw.image_detections (
-                        message_id, channel_name, product_label, confidence, bounding_box
-                    ) VALUES %s
+                    INSERT INTO raw.image_detections (message_id, channel_name, product_label, confidence, bounding_box) VALUES %s
                     """,
                     detections
                 )

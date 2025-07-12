@@ -35,7 +35,7 @@ db_params = {
 }
 
 # Data lake path
-DATA_LAKE_PATH = "data/raw/telegram_messages"
+DATA_LAKE_PATH = "../data/raw/telegram_messages"
 
 
 def create_raw_table(conn):

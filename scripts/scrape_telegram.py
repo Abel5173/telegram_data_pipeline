@@ -37,15 +37,10 @@ api_hash = os.getenv("TELEGRAM_API_HASH")
 phone = os.getenv("TELEGRAM_PHONE")  # Optional: for first-time authentication
 
 # Data lake directory
-DATA_LAKE_PATH = "data/raw/telegram_messages"
+DATA_LAKE_PATH = "../data/raw/telegram_messages"
 
 # List of Telegram channels to scrape
-CHANNELS = [
-    "chemed123",
-    "lobelia4cosmetics",
-    "tikvahpharma"
-]
-
+CHANNELS = ["chemed123", "lobelia4cosmetics", "tikvahpharma"]
 
 async def scrape_channel(client, channel, start_date, end_date):
     """Scrape messages and images from a Telegram channel."""
