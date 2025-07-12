@@ -1,0 +1,28 @@
+version: 2
+
+models:
+  - name: stg_telegram_messages
+    columns:
+      - name: message_id
+        data_tests:
+          - not_null
+      - name: channel_name
+        data_tests:
+          - not_null
+      - name: message_date
+        data_tests:
+          - not_null
+      - name: message_text
+        data_tests:
+          - not_null
+      - name: has_media
+        data_tests:
+          - not_null
+      - name: media_type
+        data_tests:
+          - accepted_values:
+              values: ['photo', null]
+      - name: media_path
+        data_tests:
+          - not_null:
+              where: "media_type = 'photo'"
