@@ -13,7 +13,7 @@ Added tests (unique, not_null, unique_combination_of_columns) in schema.yml.
 Generated documentation with dbt docs generate.
 
 
-Output: Star schema in staging and marts schemas, with ~680 messages in marts.fct_messages.
+Output: Star schema in staging and marts schemas, with ~1980 messages in marts.fct_messages.
 
 Task 3: Data Enrichment with YOLO
 
@@ -21,12 +21,18 @@ Objective: Enrich Telegram message data by detecting products in images using YO
 Process:
 Installed ultralytics for YOLOv8.
 Created enrich_with_yolo.py to process images from raw.telegram_messages.media_path, storing detections in raw.image_detections.
+Fixed duplicate source definition error by consolidating sources in models/staging/sources.yml.
+Fixed POSTGRES_HOST error by ensuring .env includes all required variables.
+Fixed missing raw.telegram_messages by reloading data.
+Fixed missing raw.image_detections by rerunning enrich_with_yolo.py.
+Fixed missing tikvahpharma images by redownloading with scrape_telegram.py.
+Fixed schema prefixing by removing schema from profiles.yml.
 Updated marts.fct_messages to include product_label via a LEFT JOIN with raw.image_detections.
 Added accepted_values test for product_label in schema.yml.
-Extended data extraction to 30 days (optional) for more images.
+Extended data extraction to 30 days for ~2028 messages and ~406 images.
 
 
-Output: raw.image_detections with ~140 detections, marts.fct_messages enriched with product labels.
+Output: raw.image_detections with ~406 detections, marts.fct_messages enriched with product labels.
 
 Directory Structure
 telegram_data_pipeline/
@@ -36,7 +42,8 @@ telegram_data_pipeline/
 │   ├── models/
 │   │   ├── staging/
 │   │   │   ├── stg_telegram_messages.sql
-│   │   │   └── sources.yml
+│   │   │   ├── sources.yml
+│   │   │   └── schema.yml
 │   │   ├── marts/
 │   │   │   ├── dim_channels.sql
 │   │   │   ├── dim_dates.sql
